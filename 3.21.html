@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header style="width:300px;">
+                <input type="text"  placeholder="请输入想查找的商品" id="input" style="padding:10px 0;">
+                <input type="button" value="搜索" style="padding:10px 40px" onclick="click1()"><br>
+                 <p>最近搜索</p>
+                <div id="fa"></div>
+                <button style="float:right" onclick="delete1()">X</button>
+    </header>
+</body>
+<script>
+    function click1(){
+        var fa =document.getElementById('fa');
+        var value1 = document.getElementById("input").value;
+        var div1=document.createElement('div');
+        var bool =0;
+        div1.innerHTML=value1;
+        div1.style.cssFloat="left";
+        div1.style.display="inline";
+        div1.style.margin="5px";
+        div1.style.backgroundColor="gray";
+        for(var i=0;i<localStorage.length;i++){
+            if(value1 ==localStorage.getItem(localStorage.key(i))){
+                bool=1;  
+            }
+        }
+        if(value1!=null&&bool==0){
+            fa.insertBefore(div1,fa.childNodes[0]);
+            var key =new Date().getTime();
+            localStorage.setItem(key,value1);
+        }
+        location=location;
+    }
+
+    function fn1(){
+        var fa =document.getElementById('fa');
+        for(var i=0;i<localStorage.length;i++){
+            var div1=document.createElement('div');
+            var key2 =localStorage.key(i);
+            var bg=localStorage.getItem(key2);
+            div1.innerHTML=bg;
+            div1.style.cssFloat="left";
+            div1.style.display="inline";
+            div1.style.margin="5px";
+            div1.style.backgroundColor="gray";
+            fa.insertBefore(div1,fa.childNodes[0]);
+        }
+    }
+    fn1();
+    function delete1(){
+        localStorage.clear();
+        var fa =document.getElementById('fa');
+        fa.innerHTML=null;
+    }
+</script>
+</html>
