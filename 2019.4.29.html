@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #price{
+        width: 1000px;height: 500px;
+        position: absolute;
+        background: url("img/timg.jpg") no-repeat;
+        background-size:contain;
+        margin-left: 150px;
+    }
+    #canvas{
+        position: absolute;
+    }
+</style>
+<body>
+    <div id="price"><img src="" alt=""></div>
+    <canvas id="canvas" height="500px" width="1000px"></canvas>
+</body>
+    <script>
+        var ctx =document.getElementById("canvas").getContext("2d");
+        var cvs=document.getElementById("canvas");
+        var cav= document.getElementById("price");
+
+           
+        ctx.fillStyle="#cccccc";
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+        ctx.closePath();
+
+        cvs.onmousedown=function(){
+            document.onmousemove=function(e){
+                ctx.clearRect(e.clientX-cav.offsetLeft+150,e.clientY-cav.offsetTop,50,50);
+                cvs.globalCompositeOperation="destination-out";
+            }
+            document.onmouseup=function(){
+                getFilledPercentage();
+                document.onmousedown=null;
+                document.onmousemove=null;
+            }
+        }
+
+        function getFilledPercentage(){
+            var imgData=ctx.getImageData(0,0,canvas.width, canvas.height);
+            var data =imgData.data;
+            var transPixels=[];
+            for(var i=0;i<data.length;i+=4){
+                if(data[i+3]<1){
+                    transPixels.push(data[i+3]);
+                }
+            }
+            if(parseInt((transPixels.length / (data.length / 4)*100))>85)
+            {   
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }    
+            
+        }
+
+    </script>
+</html>
