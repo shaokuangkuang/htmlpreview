@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    #div1{
+        width:400px;
+        height: 500px; 
+        /* box-shadow: 5px 3px 0  rgb(172, 170, 170); */
+        box-shadow:5px 5px 0px rgb(172, 170, 170),5px -5px 0px rgb(172, 170, 170),-5px 5px 0  rgb(172, 170, 170),-5px -5px 0  rgb(172, 170, 170);
+        margin: 10px auto;
+        position: relative;
+        overflow:hidden;
+    }
+    #img{
+        width: 100%;
+        height:300px;
+        background-size: contain;
+        display: block;
+    }
+    #div2{
+        width: 400px;
+        height: 400px;
+        background-color: white;
+        transition: all 1s;
+        position: relative;
+    }
+    #div2:hover{
+       transform:translatey(-100px);
+    }
+    #div1:hover img{
+        transition: all 1s;
+        transform: scale(1.4,1.2);
+    }
+    #div2 h3{
+        color: orange;
+    }
+    #div2:hover p{
+        animation: fade-in 1s ease-in 0s 1;
+        animation-fill-mode: forwards; 
+    }
+    #div2 p{
+        opacity: 0;
+    }
+    @-webkit-keyframes fade-in{
+        0%{ opacity: 0;}
+        100%{opacity:1;}
+    }
+    #div1 p{
+        color: rgb(159, 161, 161);
+        bottom:0px;
+        padding:0px 20px; 
+        margin:0px;
+    }
+    #div2 h2{
+        margin: 0;
+        padding: 20px;
+    }
+    #div2 h3{
+        margin: 0;
+        padding: 10px 20px;
+    }
+    #bot{
+        position: absolute;
+    }
+    #mon{
+        width: 50px;
+        height: 50px;
+        border-radius: 25PX;
+        background-color: orange;
+        position:absolute;
+        left: 280px;
+        top: 20px;
+        margin:0px;
+        z-index:999;
+    }
+    #mon p{
+        color: aliceblue;
+        font-size: 8px;
+    }
+    #zhaopian{
+        width: 50px;
+        height: 30px;
+        background-color: orange;
+        position: absolute;
+        top: -30px;
+        z-index:999;
+        color: aliceblue;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="div1">
+        <div id="mon">
+            <p class="p1">15</p>
+            <p class="p2">五月</p>
+        </div>
+        
+        <img id="img" src="img/zhanqiao.jpg" alt="">
+        <div id="div2">
+            <h2>青岛栈桥</h2>
+            <h3>国家AAAA级旅游风景区</h3>
+            <p>青岛栈桥是青岛海滨风景区的景点之一，是国务院于1982年首批公布的国家级风景名胜区。青岛栈桥位于游人如织的青岛中山路南端，桥身从海岸探入如弯月般的青岛湾深处。桥身供游人参观并在此停靠旅游船，由此乘船可看海上青岛。</p>
+            <div id="zhaopian">
+                    照片
+            </div>
+        </div>
+        <p id="bot">10分钟前   123评论</p>
+    </div>
+    
+</body>
+</html>
